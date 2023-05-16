@@ -37,6 +37,7 @@ TEST_SUITE("Point class tests") {
         p1=p7;
         CHECK_EQ(p1,p7);
     }
+
     TEST_CASE("getters & setters"){
         p1.set(0,0);
         CHECK_EQ(p1,p2);
@@ -47,6 +48,7 @@ TEST_SUITE("Point class tests") {
         CHECK_EQ(p1.getX(),5);
         CHECK_EQ(p1.getY(),2);
     }
+
     TEST_CASE("distance"){
 
         CHECK_EQ(p2.distance(p3),0);
@@ -70,6 +72,7 @@ TEST_SUITE("Point class tests") {
         double solution = sqrt(50.0);
         CHECK_EQ(p4.distance(p7),solution);
     }
+
     TEST_CASE("moveToward function"){
         p1=Point::moveTowards(p2, p6, 3);
         CHECK_EQ(p1,Point(0,3));
@@ -84,6 +87,7 @@ TEST_SUITE("Point class tests") {
     
 }
 TEST_SUITE("Cowboy & Ninja's class tests") {
+
     Cowboy TheGood("Blondie",Point(0,0));
     Cowboy TheBad("Angel Eyes",Point(5,0));
     Cowboy TheUgly("Tuco",Point(0,-5));
@@ -92,22 +96,23 @@ TEST_SUITE("Cowboy & Ninja's class tests") {
 
     TEST_CASE("Cowboy ammo & live"){
         
+        /*check constructor*/
         CHECK_EQ(TheGood.getHits(),110);
         CHECK_EQ(TheBad.getHits(),110);
         CHECK_EQ(TheUgly.getHits(),110);
         
-
         CHECK_EQ(TheGood.getLocation(),Point(0,0));
         CHECK_EQ(TheBad.getLocation(),Point(5,0));
         CHECK_EQ(TheUgly.getLocation(),Point(0,-5));
         
-
+        /*check shoot(), isAlive() & hasboolets() funcs*/
         for(int i=1;i<=5;i++){
             TheGood.shoot(&TheBad);
             CHECK_EQ(TheGood.hasboolets(),true);
             CHECK_EQ(TheBad.isAlive(),true);
             CHECK_EQ(TheBad.getHits(),110-(i*10));
         }
+
         TheGood.shoot(&TheBad);
         CHECK_EQ(TheGood.hasboolets(),false);
         CHECK_EQ(TheBad.isAlive(),true);
@@ -117,6 +122,7 @@ TEST_SUITE("Cowboy & Ninja's class tests") {
         CHECK_EQ(TheBad.isAlive(),true);
         CHECK_EQ(TheBad.getHits(),110-60);
 
+        /*check reload() func*/
         TheGood.reload();
         CHECK_EQ(TheGood.hasboolets(),true);
         for(int i=1;i<=4;i++){
@@ -125,6 +131,8 @@ TEST_SUITE("Cowboy & Ninja's class tests") {
             CHECK_EQ(TheBad.isAlive(),true);
             CHECK_EQ(TheBad.getHits(),50-(i*10));
         }
+        
+        /*check exceptions*/
         TheGood.shoot(&TheBad);
         CHECK_EQ(TheBad.isAlive(),false);
         CHECK_EQ(TheBad.getHits(),0);
