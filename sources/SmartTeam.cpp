@@ -1,3 +1,14 @@
+/**
+ * @package "cowboy_vs_ninja_a"
+ * @file sources/SmartTeam.cpp- implement of SmartTeam class
+ * @class SmartTeam
+ * @extends Team class
+ * class represent Team type unit, in the "cowboy_vs_ninja" game
+ * Team unit is array that can contain at most of 10 characters pointers units
+ * 
+ * @author Shachar Ketz
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -13,21 +24,10 @@
 #include "Team.hpp"
 using namespace std;
 namespace ariel{
-    SmartTeam::SmartTeam():Team(){
-        // _size=0;
-        // for(int i=0;i<10;i++){
-        //     _myTeam[i]=nullptr;
-        // }
-    }
-    SmartTeam::SmartTeam(Character *leader):Team(leader){
-        // _size=0;
-        // this->add(leader);
-    }
-    // SmartTeam::~SmartTeam(){
-    //     for(int i=0;i<_size;i++){
-    //         delete _myTeam[i];
-    //     }
-    // }
+
+    SmartTeam::SmartTeam():Team(){ }
+
+    SmartTeam::SmartTeam(Character *leader):Team(leader){ }
     
     int SmartTeam::attack(Team* enemyTeam){
         for(int i=0;i<getSize();i++){

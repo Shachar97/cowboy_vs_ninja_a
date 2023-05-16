@@ -1,3 +1,14 @@
+/**
+ * @package "cowboy_vs_ninja_a"
+ * @file sources/Team2.cpp- implement of Team2 class
+ * @class Team2
+ * @extends Team class
+ * class represent Team type unit, in the "cowboy_vs_ninja" game
+ * Team unit is array that can contain at most of 10 characters pointers units
+ * 
+ * @author Shachar Ketz
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -11,23 +22,12 @@
 #include "TrainedNinja.hpp"
 #include "Cowboy.hpp"
 #include "Team.hpp"
+
 using namespace std;
 namespace ariel{
-    Team2::Team2():Team(){
-        // _size=0;
-        // for(int i=0;i<10;i++){
-        //     _myTeam[i]=nullptr;
-        // }
-    }
-    Team2::Team2(Character *leader):Team(leader){
-        // _size=0;
-        // this->add(leader);
-    }
-    // Team2::~Team2(){
-    //     // for(int i=0;i<getSize();i++){
-    //     //     delete getIndex(i);
-    //     // }
-    // }
+    Team2::Team2():Team(){}
+
+    Team2::Team2(Character *leader):Team(leader){}
     
     int Team2::attack(Team* enemyTeam){
         for(int i=0;i<getSize();i++){
